@@ -11,6 +11,9 @@
 		0ECA74F3257E009F00E82EEC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECA74F2257E009F00E82EEC /* ContentView.swift */; };
 		0ECA74F5257E00B000E82EEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ECA74F4257E00B000E82EEC /* Assets.xcassets */; };
 		0ECA74F8257E00B000E82EEC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ECA74F7257E00B000E82EEC /* Preview Assets.xcassets */; };
+		0ECA7501257E015C00E82EEC /* Snake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECA7500257E015C00E82EEC /* Snake.swift */; };
+		0ECA7504257E083600E82EEC /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECA7503257E083600E82EEC /* Helpers.swift */; };
+		0ECA7507257E0E0500E82EEC /* SnakeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECA7506257E0E0500E82EEC /* SnakeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		0ECA74F4257E00B000E82EEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0ECA74F7257E00B000E82EEC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0ECA74F9257E00B000E82EEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0ECA7500257E015C00E82EEC /* Snake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snake.swift; sourceTree = "<group>"; };
+		0ECA7503257E083600E82EEC /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		0ECA7506257E0E0500E82EEC /* SnakeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,9 @@
 			children = (
 				0ECA74F0257E009F00E82EEC /* Snake_SwiftUIApp.swift */,
 				0ECA74F2257E009F00E82EEC /* ContentView.swift */,
+				0ECA7500257E015C00E82EEC /* Snake.swift */,
+				0ECA7506257E0E0500E82EEC /* SnakeController.swift */,
+				0ECA7503257E083600E82EEC /* Helpers.swift */,
 				0ECA74F4257E00B000E82EEC /* Assets.xcassets */,
 				0ECA74F9257E00B000E82EEC /* Info.plist */,
 				0ECA74F6257E00B000E82EEC /* Preview Content */,
@@ -140,6 +149,9 @@
 			files = (
 				0ECA74F3257E009F00E82EEC /* ContentView.swift in Sources */,
 				0ECA74F1257E009F00E82EEC /* Snake_SwiftUIApp.swift in Sources */,
+				0ECA7507257E0E0500E82EEC /* SnakeController.swift in Sources */,
+				0ECA7501257E015C00E82EEC /* Snake.swift in Sources */,
+				0ECA7504257E083600E82EEC /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
