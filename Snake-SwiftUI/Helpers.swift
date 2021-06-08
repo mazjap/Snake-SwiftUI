@@ -24,7 +24,7 @@ extension BinaryInteger {
     
     @discardableResult
     static postfix func ++ (lhs: Self) -> Self {
-        return lhs
+        return lhs + 1
     }
     
     @discardableResult
