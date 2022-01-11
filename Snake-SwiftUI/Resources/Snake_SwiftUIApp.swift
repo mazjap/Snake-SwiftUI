@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Snake_SwiftUIApp: App {
+    @State private var selectedIndex = 0
+    
     var body: some Scene {
         WindowGroup {
-            SnakeGame()
+            RootApplication()
         }
     }
 }

@@ -7,8 +7,30 @@
 
 import Foundation
 
-enum Difficulty: UInt {
-    case easy = 10
-    case normal = 20
-    case hard = 30
+enum Difficulty: UInt, CaseIterable {
+    case large = 41
+    case medium = 31
+    case small = 21
+    
+    var stringValue: String {
+        switch self {
+        case .large:
+            return "Large"
+        case .medium:
+            return "Medium"
+        case .small:
+            return "Small"
+        }
+    }
+    
+    var interval: Double {
+        switch self {
+        case .large:
+            return 0.1
+        case .medium:
+            return 0.11
+        case .small:
+            return 0.12
+        }
+    }
 }

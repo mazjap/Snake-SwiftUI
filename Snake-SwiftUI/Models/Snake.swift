@@ -42,11 +42,15 @@ struct Snake {
     }
     
     func move() -> Snake {
-        let newHead = direction.move(from: head)
+        let newHead = head.next(in: direction)
         let b = fullBody
         let newBody: [Position] = b.isEmpty ? [] : Array(b[0..<b.count - 1])
         
         return Snake(head: newHead, body: Array(newBody), direction: direction)
+    }
+    
+    func grow() -> Snake {
+        Snake(head: head.next(in: direction), body: fullBody, direction: direction)
     }
     
     func direction(_ newDirection: Direction) -> Snake {

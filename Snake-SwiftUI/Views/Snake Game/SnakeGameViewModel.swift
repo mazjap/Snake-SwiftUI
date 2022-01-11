@@ -5,47 +5,80 @@
 //  Created by Jordan Christensen on 12/7/20.
 //
 
-import Foundation
+import SwiftUI
 
 class SnakeGameViewModel: ObservableObject {
-    let difficulty: Difficulty
-    let timer = Timer.publish(every: 2, on: RunLoop.main, in: .default).autoconnect()
+    var score: Int {
+        body.count
+    }
     
-    private var snek: Snake {
+    private var t: Timer.TimerPublisher {
+        Timer.publish(every: difficulty.interval, on: RunLoop.main, in: .default)
+    }
+    
+    private(set) var difficulty: Difficulty = .medium
+    private(set) var dict: [Int : Set<Int>] = [:]
+    private var snek: Snake = Snake(head: .zero, body: [], direction: .right) {
         didSet {
             updateValues()
         }
     }
     
-    @Published var body: [Position] = []
-    @Published var score: Int = 0
-    @Published var isDead: Bool = false
-    private(set) var dict: [UInt : Set<UInt>] = [:]
+    @Published private(set) var timer = Timer.publish(every: 0.15, on: RunLoop.main, in: .default).autoconnect()
+    @Published private(set) var body: [Position] = []
+    @Published private(set) var isDead: Bool = false
+    @Published private(set) var apple: Position = .invalid
+    @Published var boardHeight = Int(Difficulty.medium.rawValue)
+    
     
     init(difficulty: Difficulty, snake: Snake? = nil) {
-        let startValue = difficulty.rawValue / 2
-        
-        let initialSnake = snake ?? Snake(head: Position(x: startValue, y: startValue), body: [Position(x: startValue, y: startValue - 1)], direction: .up)
-        
-        self.difficulty = difficulty
-        
-        self.snek = initialSnake
         updateValues()
     }
     
-    func move() {
-        snek = snek.move()
+    func move(in bounds: Bounds) {
+        let newHead = snek.head.next(in: snek.direction)
+        
+        if newHead == apple {
+            snek = snek.grow()
+        } else {
+            snek = snek.move()
+        }
+    }
+    
+    func startNewGame(difficulty: Difficulty, snake: Snake? = nil) {
+        self.difficulty = difficulty
+        
+        let startValue = Int(difficulty.rawValue / 2)
+        let initialSnake = snake ?? Snake(head: Position(x: startValue, y: startValue), body: [Position(x: startValue, y: startValue - 1)], direction: .up)
+        
+        self.snek = initialSnake
+        self.timer = t.autoconnect()
+    }
+    
+    func changeDirection(to newDirection: Direction) {
+        snek = snek.direction(newDirection)
+    }
+    
+    func color(at position: Position) -> Color {
+        if dict[position.y]?.contains(position.x) ?? false {
+            return isDead ? .red : .gray
+        } else {
+            return position == apple ? .green : .black
+        }
     }
     
     private func updateValues() {
         body = snek.fullBody
-        score = body.count
-        isDead = !(snek.head.isWithinBounds(for: difficulty) && snek.isValid)
         dict = generateDictionary()
+        isDead = !(snek.head.isWithinBounds(for: difficulty) && snek.isValid)
+        
+        while !apple.isWithinBounds(for: difficulty) || snek.fullBody.contains(apple) {
+            apple = Position.randomPosition(for: difficulty)
+        }
     }
     
-    private func generateDictionary() -> [UInt : Set<UInt>] {
-        var dict = [UInt : Set<UInt>]()
+    private func generateDictionary() -> [Int : Set<Int>] {
+        var dict = [Int : Set<Int>]()
         
         for appendage in body {
             var set = (dict[appendage.y] ?? [])

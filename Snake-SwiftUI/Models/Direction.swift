@@ -10,15 +10,6 @@ import Foundation
 enum Direction {
     case up, down, left, right
     
-    func move(from position: Position) -> Position {
-        switch self {
-        case    .up: return Position(x: position.x, y: position.y++)
-        case  .down: return Position(x: position.x, y: position.y--)
-        case .right: return Position(x: position.x++, y: position.y)
-        case  .left: return Position(x: position.x--, y: position.y)
-        }
-    }
-    
     func isOpposite(of direction: Direction) -> Bool {
         switch self {
         case .up:

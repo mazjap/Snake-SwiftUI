@@ -9,57 +9,90 @@ import SwiftUI
 
 struct SnakeGame: View {
     @ObservedObject private var vm: SnakeGameViewModel
+    @State private var dict: [Int : Set<Int>] = [:]
+    @Binding private var didLose: Bool
+    @Binding private var cellStyle: CellStyle
+    private let borderWidth: CGFloat = 3
     
-    init(vm: SnakeGameViewModel? = nil) {
-        self._vm = ObservedObject<SnakeGameViewModel>(wrappedValue: vm ?? SnakeGameViewModel(difficulty: .normal))
+    init(difficulty: Difficulty, didLose: Binding<Bool>? = nil) {
+        self.init(vm: SnakeGameViewModel(difficulty: difficulty), didLose: didLose)
+    }
+    
+    init(vm: SnakeGameViewModel? = nil, didLose: Binding<Bool>? = nil) {
+        let unwrappedVm = vm ?? SnakeGameViewModel(difficulty: .medium)
+        self._vm = ObservedObject<SnakeGameViewModel>(wrappedValue: unwrappedVm)
+        self._didLose = didLose ?? .init(get: { return unwrappedVm.isDead }, set: { _ in })
+        self._cellStyle = .init(get: { return .filled }, set: { _ in })
     }
     
     var body: some View {
-        ZStack {
-            GeometryReader { geometry in
-                let size = geometry.size.width / CGFloat(vm.difficulty.rawValue)
-                let range: [Int] = (0..<Int(vm.difficulty.rawValue)).reversed()
+        GeometryReader { geometry in
+            VStack(alignment: .center, spacing: 0) {
+                let hRange: [Int] = (0..<Int(vm.difficulty.rawValue)).reversed()
+//                let vRange: [Int] = {
+//                    let cellSize = geometry.size.width / Double(vm.difficulty.rawValue)
+//                    let veritcalCount = Int(geometry.size.height / cellSize)
+//                    return (0..<verticalCount).reversed()
+//                }()
                 
-                VStack(alignment: .center, spacing: 0) {
-                    ForEach(range, id: \.self) { y in
-                        HStack(alignment: .center, spacing: 0) {
-                            ForEach(range, id: \.self) { x in
-                                Rectangle()
-                                    .foregroundColor(color(at: Position(x: UInt(x), y: UInt(y))))
-                                    .frame(width: size, height: size)
+                Text("Snek")
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundColor(.white)
+                ZStack(alignment: .top) {
+                    VStack(alignment: .center, spacing: 0) {
+                        ForEach(hRange, id: \.self) { y in
+                            HStack(alignment: .center, spacing: 0) {
+                                ForEach(hRange, id: \.self) { x in
+                                    cell(at: Position(x: x, y: y))
+                                }
                             }
                         }
                     }
-                }
-            }
-            
-            VStack {
-                HStack {
-                    Spacer()
-                    
-                    Text("\(vm.score)")
+                    .onReceive(vm.timer, perform: { _ in
+                        if !vm.isDead {
+                            vm.move(in: Bounds(width: hRange.count, height: hRange.count))
+                        } else {
+                            vm.timer.upstream.connect().cancel()
+                        }
+                    })
+                    .padding(borderWidth)
+                    .border(Color.white, width: borderWidth)
+
+                    HStack {
+                        Spacer()
+                        
+                        Group {
+                            switch cellStyle {
+                            case let .outline(width):
+                                StrokeText(text: "\(vm.score)", strokeWidth: width)
+                                    .padding([.top, .trailing], width)
+                            case .filled:
+                                Text("\(vm.score)")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                            }
+                        }
+                        .font(.title)
+                    }
+                    .padding([.trailing, .top], borderWidth)
                 }
                 
+                
                 Spacer()
+                
+                if vm.isDead {
+                    Text("Swipe up to restart")
+                        .foregroundColor(.red)
+                }
             }
         }
-        .onReceive(vm.timer, perform: { timer in
-            if !vm.isDead {
-                vm.move()
-            }
-        })
     }
     
-    func color(at position: Position) -> Color {
-        if vm.dict[position.y]?.contains(position.x) ?? false {
-            if vm.isDead {
-                return .red
-            } else {
-                return .gray
-            }
-        } else {
-            return .black
-        }
+    private func cell(at position: Position) -> some View {
+        Rectangle()
+            .cellStyle(cellStyle, color: vm.color(at: position))
+            .aspectRatio(1, contentMode: .fit)
     }
 }
 
