@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct RootApplication: View {
-    @StateObject private var snakeViewModel = SnakeGameViewModel(difficulty: .medium)
-    @StateObject private var selectedIndexVm: SegmentedPicker.ViewModel = .init()
+    @EnvironmentObject private var snakeViewModel: SnakeGameViewModel
+    @EnvironmentObject private var selectedIndexVm: SegmentedPicker.ViewModel
+    @EnvironmentObject private var multiplayerViewModel: MultiplayerViewModel
     
     @State private var showMenu = false
     
-    var startMenu: some View {
+    private var startMenu: some View {
         DifficultySelector(selectedIndexVm: selectedIndexVm, score: snakeViewModel.score, didLose: snakeViewModel.isDead) { difficulty in
             showMenu = false
             snakeViewModel.startNewGame(difficulty: difficulty)
         }
     }
     
-    var gesture: some Gesture {
+    private var gesture: some Gesture {
         DragGesture()
             .onEnded { value in
                 let xOffset = value.startLocation.x - value.location.x
@@ -30,9 +31,9 @@ struct RootApplication: View {
                 
                 if abs(xOffset) > abs(yOffset) {
                     if xOffset < 0 {
-                        newDirection = .left
-                    } else {
                         newDirection = .right
+                    } else {
+                        newDirection = .left
                     }
                 } else {
                     if yOffset > 0 {
@@ -51,6 +52,8 @@ struct RootApplication: View {
             ZStack {
                 Color.black
                     .edgesIgnoringSafeArea(.all)
+                
+                StartMenu(multiplayerViewModel: multiplayerViewModel)
 
                 if !showMenu {
                     SnakeGame(vm: snakeViewModel, didLose: $showMenu)

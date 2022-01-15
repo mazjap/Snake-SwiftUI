@@ -18,9 +18,9 @@ struct Position: Equatable {
         case .down:
             return offset(x: 0, y: -1)
         case .left:
-            return offset(x: -1, y: 0)
-        case .right:
             return offset(x: 1, y: 0)
+        case .right:
+            return offset(x: -1, y: 0)
         }
     }
     

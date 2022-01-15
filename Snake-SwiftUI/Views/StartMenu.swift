@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct StartMenu: View {
-    var body: some View {
-        Text("Hello World")
+    @ObservedObject private var multiplayerVM: MultiplayerViewModel
+    
+    init(multiplayerViewModel: MultiplayerViewModel? = nil) {
+        self._multiplayerVM = .init(initialValue: multiplayerViewModel ?? .init())
     }
+    
+    var body: some View {
+        VStack {}
+    }
+
 }
 
 struct StartMenu_Previews: PreviewProvider {

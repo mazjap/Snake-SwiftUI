@@ -54,8 +54,10 @@ struct Snake {
     }
     
     func direction(_ newDirection: Direction) -> Snake {
-        guard !newDirection.isOpposite(of: direction) else { return self }
-        
-        return Snake(head: head, body: body, direction: newDirection)
+        Snake(head: head, body: body, direction: newDirection)
+    }
+    
+    static var empty: Self {
+        Snake(head: .zero, body: [], direction: .defaultStartDirection)
     }
 }

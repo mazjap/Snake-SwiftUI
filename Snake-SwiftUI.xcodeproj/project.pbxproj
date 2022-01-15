@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E03C1FA278D258D00CBB9B4 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E03C1F9278D258D00CBB9B4 /* GameKit.framework */; };
+		0E03C1FC278D360E00CBB9B4 /* MultiplayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03C1FB278D360E00CBB9B4 /* MultiplayerViewModel.swift */; };
+		0E03C20127907C3300CBB9B4 /* MCBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03C20027907C3300CBB9B4 /* MCBrowserView.swift */; };
+		0E03C205279128F700CBB9B4 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03C204279128F600CBB9B4 /* Binding+Extension.swift */; };
+		0E03C2092791303600CBB9B4 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03C2082791303600CBB9B4 /* View+Extension.swift */; };
+		0E03C20B27913B2300CBB9B4 /* KeyListenerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03C20A27913B2200CBB9B4 /* KeyListenerView.swift */; };
+		0E03C20D2791699D00CBB9B4 /* HostingWindowFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03C20C2791699C00CBB9B4 /* HostingWindowFinder.swift */; };
+		0E03C20F2792834B00CBB9B4 /* Set<UIKeyboardHIDKey>+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03C20E2792834B00CBB9B4 /* Set<UIKeyboardHIDKey>+Extension.swift */; };
+		0E03C2112792898900CBB9B4 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E03C2102792898900CBB9B4 /* Queue.swift */; };
 		0E066532278051060064C5C2 /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E066531278051060064C5C2 /* StartMenu.swift */; };
 		0E1599132688441B00661ECB /* AttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1599122688441A00661ECB /* AttributedText.swift */; };
 		0E6E483E271012F300879D91 /* CellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E483D271012F300879D91 /* CellStyle.swift */; };
@@ -28,6 +37,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E03C1F9278D258D00CBB9B4 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		0E03C1FB278D360E00CBB9B4 /* MultiplayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerViewModel.swift; sourceTree = "<group>"; };
+		0E03C20027907C3300CBB9B4 /* MCBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCBrowserView.swift; sourceTree = "<group>"; };
+		0E03C204279128F600CBB9B4 /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
+		0E03C2082791303600CBB9B4 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		0E03C20A27913B2200CBB9B4 /* KeyListenerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyListenerView.swift; sourceTree = "<group>"; };
+		0E03C20C2791699C00CBB9B4 /* HostingWindowFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingWindowFinder.swift; sourceTree = "<group>"; };
+		0E03C20E2792834B00CBB9B4 /* Set<UIKeyboardHIDKey>+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set<UIKeyboardHIDKey>+Extension.swift"; sourceTree = "<group>"; };
+		0E03C2102792898900CBB9B4 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		0E066531278051060064C5C2 /* StartMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = "<group>"; };
 		0E1599122688441A00661ECB /* AttributedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedText.swift; sourceTree = "<group>"; };
 		0E6E483D271012F300879D91 /* CellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellStyle.swift; sourceTree = "<group>"; };
@@ -55,16 +73,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E03C1FA278D258D00CBB9B4 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E03C1F8278D258D00CBB9B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E03C1F9278D258D00CBB9B4 /* GameKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0E278DD326B8AC2B006D99FF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				0ECA7503257E083600E82EEC /* Constants.swift */,
+				0E03C204279128F600CBB9B4 /* Binding+Extension.swift */,
+				0E03C20E2792834B00CBB9B4 /* Set<UIKeyboardHIDKey>+Extension.swift */,
+				0E03C2082791303600CBB9B4 /* View+Extension.swift */,
 				0E6E483F2710137000879D91 /* Rectangle+CellStyle.swift */,
 			);
 			path = Helpers;
@@ -75,6 +105,7 @@
 			children = (
 				0ECA74EF257E009F00E82EEC /* Snake-SwiftUI */,
 				0ECA74EE257E009F00E82EEC /* Products */,
+				0E03C1F8278D258D00CBB9B4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +161,10 @@
 			children = (
 				0ED4AEFE266FD60000BAC354 /* Snake Game */,
 				0ED4AF0926710DBD00BAC354 /* DifficultySelector.swift */,
+				0E03C1FB278D360E00CBB9B4 /* MultiplayerViewModel.swift */,
+				0E03C20A27913B2200CBB9B4 /* KeyListenerView.swift */,
+				0E03C20027907C3300CBB9B4 /* MCBrowserView.swift */,
+				0E03C20C2791699C00CBB9B4 /* HostingWindowFinder.swift */,
 				0E066531278051060064C5C2 /* StartMenu.swift */,
 				0EAD9C94268027A2003471CC /* SegmentedPicker.swift */,
 				0ED4AF0B26710EAB00BAC354 /* RootApplication.swift */,
@@ -143,6 +178,7 @@
 			children = (
 				0ECA7500257E015C00E82EEC /* Snake.swift */,
 				0ED4AF05266FD72900BAC354 /* Difficulty.swift */,
+				0E03C2102792898900CBB9B4 /* Queue.swift */,
 				0EC18DFB2671C98200376318 /* Bounds.swift */,
 				0E6E483D271012F300879D91 /* CellStyle.swift */,
 				0ED4AF01266FD65400BAC354 /* Position.swift */,
@@ -167,6 +203,8 @@
 			dependencies = (
 			);
 			name = "Snake-SwiftUI";
+			packageProductDependencies = (
+			);
 			productName = "Snake-SwiftUI";
 			productReference = 0ECA74ED257E009F00E82EEC /* Snake-SwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -194,6 +232,8 @@
 				Base,
 			);
 			mainGroup = 0ECA74E4257E009F00E82EEC;
+			packageReferences = (
+			);
 			productRefGroup = 0ECA74EE257E009F00E82EEC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -226,16 +266,24 @@
 				0E6E48402710137000879D91 /* Rectangle+CellStyle.swift in Sources */,
 				0ED4AF0C26710EAC00BAC354 /* RootApplication.swift in Sources */,
 				0ECA74F1257E009F00E82EEC /* Snake_SwiftUIApp.swift in Sources */,
+				0E03C20F2792834B00CBB9B4 /* Set<UIKeyboardHIDKey>+Extension.swift in Sources */,
 				0ED4AF02266FD65400BAC354 /* Position.swift in Sources */,
+				0E03C20127907C3300CBB9B4 /* MCBrowserView.swift in Sources */,
 				0EAD9C95268027A2003471CC /* SegmentedPicker.swift in Sources */,
+				0E03C20B27913B2300CBB9B4 /* KeyListenerView.swift in Sources */,
+				0E03C205279128F700CBB9B4 /* Binding+Extension.swift in Sources */,
 				0ECA7507257E0E0500E82EEC /* SnakeGameViewModel.swift in Sources */,
+				0E03C20D2791699D00CBB9B4 /* HostingWindowFinder.swift in Sources */,
 				0ECA7501257E015C00E82EEC /* Snake.swift in Sources */,
 				0ED4AF06266FD72900BAC354 /* Difficulty.swift in Sources */,
 				0EC18DFC2671C98200376318 /* Bounds.swift in Sources */,
 				0E6E483E271012F300879D91 /* CellStyle.swift in Sources */,
 				0E066532278051060064C5C2 /* StartMenu.swift in Sources */,
+				0E03C2112792898900CBB9B4 /* Queue.swift in Sources */,
 				0E1599132688441B00661ECB /* AttributedText.swift in Sources */,
 				0ECA7504257E083600E82EEC /* Constants.swift in Sources */,
+				0E03C2092791303600CBB9B4 /* View+Extension.swift in Sources */,
+				0E03C1FC278D360E00CBB9B4 /* MultiplayerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

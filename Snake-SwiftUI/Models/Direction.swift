@@ -7,19 +7,21 @@
 
 import Foundation
 
-enum Direction {
+enum Direction: Equatable {
     case up, down, left, right
     
-    func isOpposite(of direction: Direction) -> Bool {
+    var opposite: Self {
         switch self {
         case .up:
-            return direction == .down
+            return .down
         case .down:
-            return direction == .up
+            return .up
         case .left:
-            return direction == .right
+            return .right
         case .right:
-            return direction == .left
+            return .left
         }
     }
+    
+    static var defaultStartDirection: Self = .up
 }
